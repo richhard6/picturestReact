@@ -8,6 +8,7 @@ import userEvent from "@testing-library/user-event";
 
 function App() {
   const [user, setUser] = useState({});
+
   useEffect(() => {
     fetch("http://localhost:5000/api/users/23")
       .then((promise) => {
@@ -23,7 +24,7 @@ function App() {
       <UserCard
         avatar={user.avatar}
         userName={`${user.firstName}`}
-        followingCount={"0"}
+        followingCount={`${user.following.length}`}
         fullName={`${user.firstName} ${user.lastName}`}
       />
     </div>

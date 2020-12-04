@@ -19,4 +19,9 @@
 
 .userCard_info_userFullName__text {
   font-style: normal;
+  font-size: 10px;
+}
+
+.userCard_info__userFollowing__text {
+  font-size: 12px;
 }
