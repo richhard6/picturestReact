@@ -1,0 +1,8 @@
+.boardList__container {
+  display: flex;
+  padding: 30px;
+}
+
+.boardCard__container {
+  margin: 20px;
+}

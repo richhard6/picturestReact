@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import BoardCard from "./components/boards/boardCard/BoardCard";
+import BoardList from "./components/boards/boardList/BoardsList";
 import Header from "./components/header/header/Header";
 import UserCard from "./components/userCard/UserCard";
 import userEvent from "@testing-library/user-event";
+import BoardForm from "./components/boardForm/BoardForm";
 
 function App() {
   const [user, setUser] = useState({});
@@ -24,9 +26,11 @@ function App() {
       <UserCard
         avatar={user.avatar}
         userName={`${user.firstName}`}
-        followingCount={`${user.following.length}`}
+        followingCount={0}
         fullName={`${user.firstName} ${user.lastName}`}
       />
+      <BoardList />
+      <BoardForm id={user.id} />
     </div>
   );
 }

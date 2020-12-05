@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "../userCard/userCard.css";
 
 const UserCard = ({ avatar, userName, fullName, followingCount }) => {
