@@ -6,10 +6,20 @@ import BoardList from "./components/boards/boardList/BoardsList";
 import Header from "./components/header/header/Header";
 import UserCard from "./components/userCard/UserCard";
 import userEvent from "@testing-library/user-event";
-import BoardForm from "./components/boardForm/BoardForm";
+import UserMenu from "./components/header/userMenu/UserMenu";
+import BoardFormModal from "./components/boardForm/BoardFormModal";
 
 function App() {
   const [user, setUser] = useState({});
+  const [isShowing, setToggleModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setToggleModal(!isShowing);
+    console.log(isShowing);
+  };
+  const handleOnClose = () => {
+    setToggleModal(!isShowing);
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/users/23")
@@ -20,17 +30,35 @@ function App() {
       })
       .then((json) => setUser(json));
   }, []);
+
   return (
     <div className="app__body">
-      <Header />
+      <div className="header">
+        <Header />
+        <UserMenu
+          avatar={user.avatar}
+          firstName={user.firstName}
+          lastName={user.lastName}
+          following="0"
+        />
+      </div>
       <UserCard
         avatar={user.avatar}
         userName={`${user.firstName}`}
-        followingCount={0}
+        followingCount={user.following} // por que no sirve el length? peta todo.
         fullName={`${user.firstName} ${user.lastName}`}
       />
-      <BoardList />
-      <BoardForm id={user.id} />
+      <BoardList id={user.id} />
+
+      <button type="button" onClick={handleOpenModal} class="button__Modal">
+        +
+      </button>
+
+      <BoardFormModal
+        open={isShowing}
+        handleOnClose={handleOnClose}
+        id={user.id}
+      />
     </div>
   );
 }

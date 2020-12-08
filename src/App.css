@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.app__body {
+  width: 100%;
+}
+
+.button__Modal {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 40px;
+}

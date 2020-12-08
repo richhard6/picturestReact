@@ -3,9 +3,10 @@ import BoardCard from "../boardCard/BoardCard";
 import "../boardList/boardList.css";
 
 const BoardsList = () => {
+  // necesitamos coger los boards del ID correspndiente
   const [boards, setBoards] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/boards")
+    fetch(`http://localhost:5000/api/boards/`)
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();

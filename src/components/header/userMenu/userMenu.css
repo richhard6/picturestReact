@@ -1,0 +1,16 @@
+.user__menu_avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.user__menu_arrow {
+  width: 30px;
+  height: 30px;
+}
+
+.user__toggled {
+  width: 60px;
+  height: 60;
+  position: fixed;
+}
