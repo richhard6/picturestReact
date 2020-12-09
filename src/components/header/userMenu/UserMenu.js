@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../userMenu/userMenu.css";
 
-const UserMenu = ({ avatar, firstName, lastName, following }) => {
+const UserMenu = ({ avatar, firstName, lastName, following, username }) => {
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {
     setToggle(!toggle); //toggle is working.
@@ -11,7 +11,7 @@ const UserMenu = ({ avatar, firstName, lastName, following }) => {
     <div>
       <div>
         <img src={avatar} alt="User Avatar" className="user__menu_avatar" />
-        <div>@{firstName}</div>
+        <div>@{username}</div>
         <img
           src="https://cdn1.iconfinder.com/data/icons/ios-11-ui-elements-vol-1/29/25_dropdown_menu_down_arrow-512.png"
           alt="Dropdown arrow"

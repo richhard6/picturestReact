@@ -54,4 +54,5 @@
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 40px;
+  margin: 2px auto;
 }

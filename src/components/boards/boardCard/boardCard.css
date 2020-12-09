@@ -1,0 +1,9 @@
+.board__Card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.board__Card_NumberPins {
+  top: 700px;
+}
