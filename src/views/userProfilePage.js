@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import UserCard from "../components/userCard/UserCard";
+import { useHistory } from "react-router-dom";
 
-const UserProfile = () => {
-  const [user, setUser] = useState({});
-  useEffect(() => {
-    fetch("http://localhost:5000/api/users/21")
-      .then((promise) => {
-        if (promise.status === 200) {
-          return promise.json();
-        }
-      })
-      .then((json) => setUser(json));
-  }, []);
+const UserProfile = ({ user }) => {
+  let history = useHistory(); //aqui tendriamos que fetchear solamente
+  //boards especificos de usuario y un board que se llame todos los pines que contenga todos los pines del usuario.
+  const handleClick = () => {
+    history.goBack();
+  };
+
   return (
-    <UserCard
-      avatar={user.avatar}
-      userName={`${user.username}`}
-      followingCount={user.following} // por que no sirve el length? peta todo.
-      fullName={`${user.firstName} ${user.lastName}`}
-    />
+    <div>
+      <UserCard
+        avatar={user.avatar}
+        userName={`${user.username}`}
+        followingCount={user.following && user.following.length} // por que no sirve el length? peta todo.
+        fullName={`${user.firstName} ${user.lastName}`}
+      />
+      <button type="button" onClick={handleClick}>
+        Go back
+      </button>
+    </div>
   );
 };
 

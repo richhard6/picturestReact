@@ -6,8 +6,26 @@ import UserCard from "../components/userCard/UserCard";
 import userEvent from "@testing-library/user-event";
 import UserMenu from "../components/header/userMenu/UserMenu";
 import BoardFormModal from "../components/boardForm/BoardFormModal";
+import { useParams } from "react-router";
+import { useHistory } from "react-router";
 
-const BoardPage = (user) => {
+const BoardPage = ({ user }) => {
+  const params = useParams(); //EL routing para cada. importantisimo.
+
+  const [board, setBoard] = useState({}); // para meter el fetch aqui especifico.
+
+  let history = useHistory();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/boards/${params.id}`)
+      .then((response) => response.json()) //SI ESTOY RECIBIENDO EL USUARIO CORRECTO..
+      .then((json) => setBoard(json))
+      .catch(() => {
+        history.push("/");
+      });
+  }, []); //los history push se pueden usar dentro del catch.
+
+  console.log(board);
   const [isShowing, setToggleModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -20,20 +38,10 @@ const BoardPage = (user) => {
 
   return (
     <div className="app__body">
-      <div className="header">
-        <Header />
-        <UserMenu
-          avatar={user.avatar}
-          firstName={user.firstName}
-          lastName={user.lastName}
-          following={user.following}
-          username={user.username}
-        />
-      </div>
       <UserCard
         avatar={user.avatar}
         userName={`${user.username}`}
-        followingCount={user.following} // por que no sirve el length? peta todo.
+        followingCount={user.following && user.following.length} // por que no sirve el length? peta todo.
         fullName={`${user.firstName} ${user.lastName}`}
       />
       <BoardList id={user.id} />
@@ -41,6 +49,10 @@ const BoardPage = (user) => {
       <button type="button" onClick={handleOpenModal} class="button__Modal">
         +
       </button>
+      <div>
+        {board.author}
+        {board.title}
+      </div>
 
       <BoardFormModal
         open={isShowing}

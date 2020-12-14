@@ -3,24 +3,16 @@
   margin: 0 auto;
   display: inline-flex;
   flex-wrap: wrap;
-  position: relative;
+
   justify-content: center;
-  align-items: center;
 }
 
 .boardCard__container {
   width: 150px;
   height: 150px;
   line-height: 150px;
-  text-align: center;
-  background-color: salmon;
   border: 1px solid black;
   padding: 10px;
   margin: 5px;
   border-radius: 8%;
-  transition: transform 0.2s;
-}
-
-.boardCard__container:hover {
-  transform: scale(1.5);
 }

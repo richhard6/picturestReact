@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import "../header/header.css";
 import logo from "../header/picturest.png";
+import { Link } from "react-router-dom";
+import UserMenu from "../userMenu/UserMenu";
+import Button from "../button/Button";
 
-const Header = () => {
+const Header = ({ avatar, firstName, lastName, following, username }) => {
   return (
     <div className="header__container">
-      <img src={logo} alt="Picturest Logo" class="picturest-logo" />
-      <div className="header__userContainer"></div>
+      <div>
+        <Link to="/">
+          <img src={logo} alt="Picturest Logo" class="picturest-logo" />
+        </Link>
+      </div>
+      <div className="header__userContainer">
+        <UserMenu
+          avatar={avatar}
+          firstName={firstName}
+          lastName={lastName}
+          following={following}
+          username={username}
+        />
+      </div>
     </div>
   );
 };

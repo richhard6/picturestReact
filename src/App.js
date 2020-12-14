@@ -1,23 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import BoardList from "./components/boards/boardList/BoardsList";
 import Header from "./components/header/header/Header";
-import UserCard from "./components/userCard/UserCard";
-import userEvent from "@testing-library/user-event";
-import UserMenu from "./components/header/userMenu/UserMenu";
-import BoardFormModal from "./components/boardForm/BoardFormModal";
+import BoardPage from "./views/boardPage";
+import HomePage from "./views/homePage";
+import UserProfilePage from "./views/userProfilePage";
+import PinList from "./components/pins/pinsList/PinList";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState({});
-  const [isShowing, setToggleModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setToggleModal(!isShowing);
-    console.log(isShowing);
-  };
-  const handleOnClose = () => {
-    setToggleModal(!isShowing);
-  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/users/21")
@@ -31,33 +22,32 @@ function App() {
 
   return (
     <div className="app__body">
-      <div className="header">
-        <Header />
-        <UserMenu
-          avatar={user.avatar}
-          firstName={user.firstName}
-          lastName={user.lastName}
-          following={user.following}
-          username={user.username}
-        />
-      </div>
-      <UserCard
-        avatar={user.avatar}
-        userName={`${user.username}`}
-        followingCount={user.following && user.following.length} // por que no sirve el length? peta todo.
-        fullName={`${user.firstName} ${user.lastName}`}
-      />
-      <BoardList id={user.id} />
+      <BrowserRouter>
+        <div className="header">
+          <Header
+            avatar={user.avatar}
+            firstName={user.firstName}
+            lastName={user.lastName}
+            following={user.following}
+            username={user.username}
+          />
+        </div>
 
-      <button type="button" onClick={handleOpenModal} class="button__Modal">
-        +
-      </button>
-
-      <BoardFormModal
-        open={isShowing}
-        handleOnClose={handleOnClose}
-        id={user.id}
-      />
+        <Switch>
+          <Route exact path="/boards/:id">
+            <BoardPage user={user} />
+          </Route>
+          <Route path="/user">
+            <UserProfilePage user={user} />
+          </Route>
+          <Route path="/pins">
+            <PinList user={user} />
+          </Route>
+          <Route path="/">
+            <HomePage user={user} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

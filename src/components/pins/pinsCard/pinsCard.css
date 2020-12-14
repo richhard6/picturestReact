@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+.pin__Card_container {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}

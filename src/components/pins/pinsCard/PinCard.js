@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import "../pinsCard/pinsCard.css";
 
-const PinCard = () => {
-  ///sera el componente de cada pin como tal, que tendra su
-  return; // nombrede pin, autor del pin, source, el board q pertencen
-}; //source, urlimage, description.
+const PinCard = ({ pin }) => {
+  // {pin.name}
+  return (
+    <div className="pin__Card_container">
+      <img src={pin.urlImage} alt="pin imagex" className="image"></img>
+      <div>{pin.name}</div>
+    </div>
+  );
+};
 
 export default PinCard;
