@@ -1,9 +1,7 @@
-import React, { useState } from "react";
 import "../header/header.css";
 import logo from "../header/picturest.png";
 import { Link } from "react-router-dom";
 import UserMenu from "../userMenu/UserMenu";
-import Button from "../button/Button";
 
 const Header = ({ avatar, firstName, lastName, following, username }) => {
   return (

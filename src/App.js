@@ -6,12 +6,14 @@ import HomePage from "./views/homePage";
 import UserProfilePage from "./views/userProfilePage";
 import PinList from "./components/pins/pinsList/PinList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LoginPage from "./views/loginPage";
+import BoardFormModal from "../src/components/boardForm/BoardFormModal";
 
 function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/21")
+    fetch("http://localhost:5001/api/users/5fd9e66ff61fe4098091bab1")
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();
@@ -34,7 +36,7 @@ function App() {
         </div>
 
         <Switch>
-          <Route exact path="/boards/:id">
+          <Route path="/boards">
             <BoardPage user={user} />
           </Route>
           <Route path="/user">
@@ -42,6 +44,9 @@ function App() {
           </Route>
           <Route path="/pins">
             <PinList user={user} />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
           </Route>
           <Route path="/">
             <HomePage user={user} />

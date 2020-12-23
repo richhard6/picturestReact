@@ -7,13 +7,14 @@ const HomePage = ({ user }) => {
   return (
     <div className="app_body">
       <UserCard
-        avatar={user.avatar}
+        avatar="noavatar"
         userName={`${user.username}`}
         followingCount={user.following && user.following.length} // por que no sirve el length? peta todo.
         fullName={`${user.firstName} ${user.lastName}`}
       />
 
       <BoardList id={user.id} />
+
       <PinList />
     </div>
   );

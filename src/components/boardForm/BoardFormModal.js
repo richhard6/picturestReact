@@ -36,7 +36,7 @@ const BoardForm = (props) => {
   const [title, setTitle] = useState();
 
   const body = {
-    author: props.id,
+    author: "5fd9e66ff61fe4098091bab1", //hardcoded //localStorage.getItem("userInfo"), //puedo obtener el usuario. Le pasa todo el JSON y por eso no sirve la validacion(no lo crea.)
     title: title,
   };
 
@@ -50,8 +50,9 @@ const BoardForm = (props) => {
       },
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:5000/api/boards", options).then((response) =>
-      console.log(response)
+
+    fetch("http://localhost:5001/api/boards", options).then((response) =>
+      response.json()
     );
   }; // Ya hace el POST de lo qe tu le mandes.
   return (

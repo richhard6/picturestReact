@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "../boardCard/boardCard.css";
 
 const BoardCard = ({ board }) => {

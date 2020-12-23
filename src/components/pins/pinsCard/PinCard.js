@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "../pinsCard/pinsCard.css";
 
 const PinCard = ({ pin }) => {

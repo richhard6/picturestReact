@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import "./App.css";
 import UserCard from "../components/userCard/UserCard";
 import { useHistory } from "react-router-dom";

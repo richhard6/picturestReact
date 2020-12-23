@@ -17,7 +17,7 @@ const BoardPage = ({ user }) => {
   let history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/boards/${params.id}`)
+    fetch(`http://localhost:5001/api/boards/${params.id}`)
       .then((response) => response.json()) //SI ESTOY RECIBIENDO EL USUARIO CORRECTO..
       .then((json) => setBoard(json))
       .catch(() => {
@@ -45,7 +45,7 @@ const BoardPage = ({ user }) => {
         fullName={`${user.firstName} ${user.lastName}`}
       />
       <BoardList id={user.id} />
-
+      <div>hola?</div>
       <button type="button" onClick={handleOpenModal} class="button__Modal">
         +
       </button>

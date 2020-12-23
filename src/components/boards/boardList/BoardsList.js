@@ -6,7 +6,7 @@ const BoardsList = () => {
   // necesitamos coger los boards del ID correspndiente
   const [boards, setBoards] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/boards/`) //http://localhost:5000/api/users/21/boards ruta correcta
+    fetch(`http://localhost:5001/api/boards/`) //http://localhost:5000/api/users/21/boards ruta correcta
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();
