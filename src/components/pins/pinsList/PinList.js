@@ -6,7 +6,7 @@ const PinList = () => {
   // necesitamos coger los boards del ID correspndiente
   const [pins, setPins] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/pins/`) //http://localhost:5000/api/users/21/boards ruta correcta
+    fetch(`http://localhost:5001/api/pins/`) //http://localhost:5000/api/users/21/boards ruta correcta
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();

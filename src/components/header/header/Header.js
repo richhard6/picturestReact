@@ -6,10 +6,11 @@ import UserMenu from "../userMenu/UserMenu";
 const Header = ({ avatar, firstName, lastName, following, username }) => {
   return (
     <div className="header__container">
-      <div>
+      <div className="picturest">
         <Link to="/">
           <img src={logo} alt="Picturest Logo" class="picturest-logo" />
         </Link>
+        Picturest
       </div>
       <div className="header__userContainer">
         <UserMenu

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import BoardList from "../components/boards/boardList/BoardsList";
 import Header from "../components/header/header/Header";
 import UserCard from "../components/userCard/UserCard";
@@ -45,7 +44,7 @@ const BoardPage = ({ user }) => {
         fullName={`${user.firstName} ${user.lastName}`}
       />
       <BoardList id={user.id} />
-      <div>hola?</div>
+
       <button type="button" onClick={handleOpenModal} class="button__Modal">
         +
       </button>

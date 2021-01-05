@@ -1,8 +1,5 @@
 .pinList__container {
-  width: 100%;
-  margin: 0 auto;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  columns: 8 215px;
+  column-gap: 44px;
+  margin: 0 32px;
 }
