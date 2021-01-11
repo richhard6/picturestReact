@@ -29,35 +29,46 @@ const BoardsList = () => {
       .then((json) => setBoards(json));
   }, []);
 
+  console.log(boards);
+  //array vacio.
+  let boardId = [];
+
+  boards.map((board) => {
+    boardId.push(board._id);
+    console.log(boardId); ///esta es la clave de todo. quiza un fetch for each esos ID. :o
+  });
+  console.log(boardId);
+
   useEffect(() => {
-    boards.map((board) => {
-      let boardId = board._id;
-      console.log(boardId); // no esta haciedno el console .log ....
-      fetch(`http://localhost:5001/api/boards/${boardId}/pins`)
+    boardId.map((boardId) => {
+      fetch(`http://localhost:5001/api/boards/${boardId}/pins`) //http://localhost:5000/api/users/21/boards ruta correcta
         .then((promise) => {
           if (promise.status === 200) {
-            return promise.json();
+            return promise.json(); //Se queda solamente con el valor del ultimo fetch.
           }
         })
         .then((json) => setPinsInfo(json));
     });
-  }, []);
+  }, [boards]);
 
-  console.log(boards);
-  console.log(pinsInfo); //array vacio.
+  console.log(pinsInfo);
+  let urlImage = [];
 
-  boards.map((board) => {
-    let x = board._id;
-    console.log(x); ///esta es la clave de todo. quiza un fetch for each esos ID. :o
+  pinsInfo.map((pins) => {
+    console.log(pins.urlImage);
+    urlImage.push(pins.urlImage);
   });
 
+  console.log(urlImage);
+
   return (
-    <div className="boardList__container">
-      {boards.map((board) => (
-        <div className="boardCard__container">
-          <BoardCard board={board} />
-        </div>
-      ))}
+    <div>
+      <span className="boardsList__title">Boards</span>
+      <div className="boardsList__container">
+        {boards.map((board) => (
+          <BoardCard board={board} urlImage={urlImage} />
+        ))}
+      </div>
     </div>
   );
 };

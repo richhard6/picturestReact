@@ -12,7 +12,7 @@
 .user__toggled {
   width: 60px;
   height: 60;
-  position: fixed;
+  transition: linear 0.5s;
 }
 
 .logOut:hover {

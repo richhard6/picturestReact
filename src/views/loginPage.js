@@ -5,6 +5,7 @@ const loginPage = () => {
   return (
     <>
       <LoginForm />
+
       <PinForm />
     </>
   );

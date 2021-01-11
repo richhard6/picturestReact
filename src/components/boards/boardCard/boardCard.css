@@ -1,10 +1,31 @@
-.board__Card {
-  width: 100%;
+.boardCard__container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  width: 215px;
+  height: 176px;
+  background: #fcfcfc;
+  border-radius: 14px;
+  flex-direction: column-reverse;
+  flex-shrink: 0;
+  margin: 23px;
+}
+.boardCard_info__container {
+  display: flex;
+  margin: 14px;
+  flex-direction: column;
 }
 
-.board__Card_NumberPins {
-  top: 700px;
+.boardCard_info_board__title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.boardCard_info_board__number {
+  font-size: 10px;
+  line-height: 12px;
+  color: #6b6b70;
+}
+
+.board__image {
+  width: 100%;
 }

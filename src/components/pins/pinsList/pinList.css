@@ -3,3 +3,11 @@
   column-gap: 44px;
   margin: 0 32px;
 }
+
+.pinList__title {
+  margin: 12px 32px;
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+}

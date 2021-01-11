@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import "../loginForm/loginForm.css";
+import { Link } from "react-router-dom";
 
 const LogInForm = () => {
   const [email, setEmail] = useState();
@@ -61,6 +62,12 @@ const LogInForm = () => {
           <div className="login__button" onClick={handleLogin}>
             Login!
           </div>
+          <span>
+            Not registered? register
+            <Link to="/register">
+              <div>here!</div>
+            </Link>
+          </span>
         </div>
       </form>
     </div>

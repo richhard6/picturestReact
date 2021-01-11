@@ -26,12 +26,15 @@ const PinList = () => {
   }, []);
   return (
     <>
-      <div className="pinList__container">
-        {pins.map((pin) => (
-          <div className="pinCard__container" onClick={handleOpenModal}>
-            <PinCard pin={pin} />
-          </div>
-        ))}
+      <div>
+        <span className="pinList__title">Pins</span>
+        <div className="pinList__container">
+          {pins.map((pin) => (
+            <div className="pinCard__container" onClick={handleOpenModal}>
+              <PinCard pin={pin} />
+            </div>
+          ))}
+        </div>
       </div>
 
       <PinModal open={isShowing} handleOnClose={handleOnClose} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../pinForm/pinForm.css";
 
 const PinForm = () => {
@@ -8,6 +8,8 @@ const PinForm = () => {
   const [source, setSource] = useState();
   const [description, setDescription] = useState();
 
+  const [boards, setBoards] = useState([]);
+
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
 
   let userId = null;
@@ -16,6 +18,20 @@ const PinForm = () => {
   } else {
     userId = localStorageUser._id;
   }
+
+  useEffect(() => {
+    if (localStorageUser) {
+      fetch(`http://localhost:5001/api/users/${localStorageUser._id}/boards`) //http://localhost:5000/api/users/21/boards ruta correcta
+        .then((promise) => {
+          if (promise.status === 200) {
+            return promise.json();
+          }
+        })
+        .then((json) => setBoards(json));
+    }
+  }, []);
+
+  console.log("holaaaAKSDSAJKDJDKSA" + boards);
 
   const body = {
     author: userId,
@@ -40,7 +56,6 @@ const PinForm = () => {
     );
   }; // Ya hace el POST de lo qe tu le mandes.
 
-  // Ya hace el POST de lo qe tu le mandes.
   return (
     <form className="pinForm">
       <label>Pin Name</label>
@@ -69,13 +84,13 @@ const PinForm = () => {
       />
       <label>Select your desired Board</label>
       <select onChange={(e) => setSelectedBoard(e.target.value)}>
-        <option value="5fdc71a67e176802d85cfaf2">
-          5fdc71a67e176802d85cfaf2
-        </option>
-        <option value="e"></option>
-        <option value="3"></option>
-        <option value="1"></option>
+        <option value="----">----</option>
+        {boards.map((board) => {
+          return <option value={board._id}>{board.title}</option>;
+        })}
+        ;
       </select>
+
       <button onClick={handleSubmit} type="submit">
         Enviar pin!
       </button>
