@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import PinCard from "../pinsCard/PinCard";
 import "../pinsList/pinList.css";
+import PinModal from "../pinsCard/PinModal";
 
 const PinList = () => {
   // necesitamos coger los boards del ID correspndiente
   const [pins, setPins] = useState([]);
+  const [isShowing, setToggleModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setToggleModal(!isShowing);
+    console.log(isShowing);
+  };
+  const handleOnClose = () => {
+    setToggleModal(!isShowing);
+  };
   useEffect(() => {
     fetch(`http://localhost:5001/api/pins/`) //http://localhost:5000/api/users/21/boards ruta correcta
       .then((promise) => {
@@ -15,13 +25,17 @@ const PinList = () => {
       .then((json) => setPins(json));
   }, []);
   return (
-    <div className="pinList__container">
-      {pins.map((pin) => (
-        <div className="pinCard__container">
-          <PinCard pin={pin} />
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="pinList__container">
+        {pins.map((pin) => (
+          <div className="pinCard__container" onClick={handleOpenModal}>
+            <PinCard pin={pin} />
+          </div>
+        ))}
+      </div>
+
+      <PinModal open={isShowing} handleOnClose={handleOnClose} />
+    </>
   );
 };
 

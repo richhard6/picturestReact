@@ -1,0 +1,7 @@
+.registerForm {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 44px;
+  align-items: center;
+}

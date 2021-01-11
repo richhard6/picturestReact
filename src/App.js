@@ -7,13 +7,25 @@ import UserProfilePage from "./views/userProfilePage";
 import PinList from "./components/pins/pinsList/PinList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "./views/loginPage";
+import RegisterPage from "./views/registerPage";
 import BoardFormModal from "../src/components/boardForm/BoardFormModal";
+import PinsOfBoardPage from "./views/pinsOfBoardPage";
 
 function App() {
   const [user, setUser] = useState({});
 
+  const token = localStorage.getItem("token");
+  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
+  let userId = null;
+  if (localStorageUser === null) {
+    userId = 1;
+  } else {
+    userId = localStorageUser._id;
+  }
+
   useEffect(() => {
-    fetch("http://localhost:5001/api/users/5fd9e66ff61fe4098091bab1")
+    fetch("http://localhost:5001/api/users/" + userId)
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();
@@ -36,6 +48,9 @@ function App() {
         </div>
 
         <Switch>
+          <Route path="/test">
+            <PinsOfBoardPage />
+          </Route>
           <Route path="/boards">
             <BoardPage user={user} />
           </Route>
@@ -47,6 +62,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <LoginPage />
+          </Route>
+          <Route exact path="/register">
+            <RegisterPage />
           </Route>
           <Route path="/">
             <HomePage user={user} />

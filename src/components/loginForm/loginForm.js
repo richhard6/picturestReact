@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
+import "../loginForm/loginForm.css";
+
 const LogInForm = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState(false);
   const history = useHistory();
-
-  const userInfo = localStorage.getItem("user");
 
   //JSON.parse(localStorage).getItem("user")
 
@@ -28,33 +28,42 @@ const LogInForm = () => {
       .then((json) => {
         localStorage.setItem("token", json.token);
         localStorage.setItem("user", JSON.stringify(json.user));
-        history.replaceState("/user");
-        window.location.reload(false);
+
+        history.push("/user");
+        history.go(0);
       })
       .catch((error) => {
         setError(true);
       });
   };
   return (
-    <form>
-      <label>Email</label>
-      <input
-        type="text"
-        name="email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+    <div className="login__container">
+      <form>
+        <div className="form__container">
+          <label className="form__label">Email</label>
+          <input
+            placeholder="Enter your email here..."
+            className="form__input"
+            type="text"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <label>Password</label>
-      <input
-        type="text"
-        name="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <p>Something went wrong....</p>}
-      <button onClick={handleLogin} type="submit">
-        Login!
-      </button>
-    </form>
+          <label className="form__label">Password</label>
+          <input
+            placeholder="Enter your password here..."
+            className="form__input"
+            type="password"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p className="error__message">Something went wrong....</p>}
+          <div className="login__button" onClick={handleLogin}>
+            Login!
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 

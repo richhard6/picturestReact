@@ -18,19 +18,19 @@ const BoardForm = (props) => {
       },
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:5000/api/boards", options).then((response) =>
+    fetch("http://localhost:5001/api/boards", options).then((response) =>
       console.log(response)
     );
   }; // Ya hace el POST de lo qe tu le mandes.
   return (
     <form>
-      <label>
-        <input
-          type="text"
-          name="name"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
+      <label>Board Name</label>
+      <input
+        type="text"
+        name="name"
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
       <button onClick={handleSubmit} type="submit">
         Create board!
       </button>

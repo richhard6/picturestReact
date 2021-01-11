@@ -1,0 +1,41 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 50px;
+}
+
+.login__button {
+  text-decoration: none;
+  border: 2px #bd081c solid;
+  background-color: #bd081c;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 80px 80px 80px;
+  cursor: pointer;
+}
+
+.login__container {
+  display: flex;
+  justify-content: center;
+}
+
+.form__input {
+  padding: 10px;
+  margin: 15px 0 15px 0;
+  border-radius: 7px;
+  border: 3px black solid;
+}
+
+.form__label {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 24px;
+}
+
+.error__message {
+  color: red;
+}

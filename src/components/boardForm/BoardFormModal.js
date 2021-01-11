@@ -35,8 +35,17 @@ const useStyles = makeStyles((theme) => ({
 const BoardForm = (props) => {
   const [title, setTitle] = useState();
 
+  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
+  let userId = null;
+  if (localStorageUser === null) {
+    userId = 1;
+  } else {
+    userId = localStorageUser._id;
+  }
+
   const body = {
-    author: "5fd9e66ff61fe4098091bab1", //hardcoded //localStorage.getItem("userInfo"), //puedo obtener el usuario. Le pasa todo el JSON y por eso no sirve la validacion(no lo crea.)
+    author: userId, //hardcoded //localStorage.getItem("userInfo"), //puedo obtener el usuario. Le pasa todo el JSON y por eso no sirve la validacion(no lo crea.)
     title: title,
   };
 

@@ -14,3 +14,7 @@
   height: 60;
   position: fixed;
 }
+
+.logOut:hover {
+  cursor: pointer;
+}

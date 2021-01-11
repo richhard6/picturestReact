@@ -3,14 +3,22 @@ import "../pinForm/pinForm.css";
 
 const PinForm = () => {
   const [selectedBoard, setSelectedBoard] = useState();
-  const [author, setAuthor] = useState();
   const [pinName, setPinName] = useState();
   const [image, setImage] = useState();
   const [source, setSource] = useState();
   const [description, setDescription] = useState();
 
+  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
+  let userId = null;
+  if (localStorageUser === null) {
+    userId = 1;
+  } else {
+    userId = localStorageUser._id;
+  }
+
   const body = {
-    author: author,
+    author: userId,
     board: selectedBoard,
     name: pinName,
     urlImage: image,
@@ -35,12 +43,6 @@ const PinForm = () => {
   // Ya hace el POST de lo qe tu le mandes.
   return (
     <form className="pinForm">
-      <label>Author</label>
-      <input
-        type="text"
-        name="author"
-        onChange={(e) => setAuthor(e.target.value)}
-      />
       <label>Pin Name</label>
       <input
         type="text"

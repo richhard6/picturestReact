@@ -1,7 +1,4 @@
-import "../pinsCard/pinsCard.css";
-import PinModal from "./PinModal";
-
-const PinCard = ({ pin }) => {
+const PinInfo = ({ pin }) => {
   // {pin.name}
   return (
     <>
@@ -13,4 +10,4 @@ const PinCard = ({ pin }) => {
   );
 };
 
-export default PinCard;
+export default PinInfo;
