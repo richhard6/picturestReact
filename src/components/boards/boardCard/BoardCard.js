@@ -12,8 +12,8 @@ const BoardCard = ({ board, urlImage }) => {
     //lo que hay que usar para fetchear.
   };
   return (
-    <div className="boardCard__container">
-      <div className="boardCard_info__container" onClick={handleClick}>
+    <div className="boardCard__container" onClick={handleClick}>
+      <div className="boardCard_info__container">
         <img src={urlImage} className="board__image"></img>
         <div className="boardCard_info_board__title">{board.title}</div>
         <div className="boardCard_info_board__number">{board.numberOfPins}</div>

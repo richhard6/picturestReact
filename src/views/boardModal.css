@@ -1,0 +1,12 @@
+.button__Modal {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+
+  border-radius: 50%;
+  background-color: rgb(194, 26, 26);
+  justify-content: space-around;
+  font-size: 20px;
+  color: white;
+}

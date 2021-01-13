@@ -8,15 +8,26 @@ const PinList = () => {
   const [pins, setPins] = useState([]);
   const [isShowing, setToggleModal] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (pinx) => {
     setToggleModal(!isShowing);
+
     console.log(isShowing);
   };
+
+  const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
+  let userId = null;
+  if (localStorageUser === null) {
+    userId = 1;
+  } else {
+    userId = localStorageUser._id;
+  }
+
   const handleOnClose = () => {
     setToggleModal(!isShowing);
   };
   useEffect(() => {
-    fetch(`http://localhost:5001/api/pins/`) //http://localhost:5000/api/users/21/boards ruta correcta
+    fetch(`http://localhost:5001/api/users/${userId}/pins`) //http://localhost:5000/api/users/21/boards ruta correcta
       .then((promise) => {
         if (promise.status === 200) {
           return promise.json();
@@ -32,12 +43,15 @@ const PinList = () => {
           {pins.map((pin) => (
             <div className="pinCard__container" onClick={handleOpenModal}>
               <PinCard pin={pin} />
+              <PinModal
+                open={isShowing}
+                handleOnClose={handleOnClose}
+                pin={pin}
+              />
             </div>
           ))}
         </div>
       </div>
-
-      <PinModal open={isShowing} handleOnClose={handleOnClose} />
     </>
   );
 };

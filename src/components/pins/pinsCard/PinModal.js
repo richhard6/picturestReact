@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PinModal = ({ open, handleOnClose }) => {
+const PinModal = ({ open, handleOnClose, pin }) => {
   const classes = useStyles();
   return (
     <Modal
@@ -44,7 +44,7 @@ const PinModal = ({ open, handleOnClose }) => {
       data-testid="modal"
     >
       <div className={classes.paper}>
-        <div>hola</div>
+        <div>{pin.name}</div>
       </div>
     </Modal>
   );

@@ -40,13 +40,3 @@
 .app__body {
   width: 100%;
 }
-
-.button__Modal {
-  width: 140px;
-  height: 140px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  font-size: 40px;
-  margin: 2px auto;
-}
