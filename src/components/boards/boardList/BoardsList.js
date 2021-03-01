@@ -8,7 +8,7 @@ const BoardsList = () => {
   // necesitamos coger los boards del ID correspndiente
   const [boards, setBoards] = useState([]);
 
-  const [pinsInfo, setPinsInfo] = useState([]);
+  const [pinsInfo, setPinsInfo] = useState([{}]);
 
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
 
